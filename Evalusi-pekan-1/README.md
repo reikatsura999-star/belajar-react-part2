@@ -1,16 +1,59 @@
-# React + Vite
+Todo List App (React.js + Tailwind CSS)
+Deskripsi Proyek
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Todo List App adalah aplikasi sederhana yang dibangun menggunakan React.js dan Tailwind CSS untuk membantu pengguna mengelola daftar tugas harian. Aplikasi ini memungkinkan pengguna menambahkan tugas, menandai tugas sebagai selesai, memfilter tugas berdasarkan status, serta menghapus tugas yang tidak diperlukan.
 
-Currently, two official plugins are available:
+Proyek ini dibuat sebagai latihan pengembangan React, dengan fokus pada pengelolaan state dan penerapan styling modern menggunakan Tailwind CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Fitur Aplikasi
+1. Menambah Task
 
-## React Compiler
+Pengguna dapat memasukkan nama tugas melalui kolom input dan menekan tombol Tambah. Task yang ditambahkan akan langsung muncul di dalam daftar.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Menandai Task Selesai
 
-## Expanding the ESLint configuration
+Setiap task dilengkapi dengan checkbox untuk menandai task sebagai selesai.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Filter Task
+
+Aplikasi menyediakan tiga pilihan filter:
+
+Semua: Menampilkan seluruh task
+
+Aktif: Menampilkan task yang belum selesai
+
+Selesai: Menampilkan task yang sudah diselesaikan
+
+4. Menghapus Task
+
+Pengguna dapat menghapus task yang sudah tidak diperlukan dari daftar.
+
+Fitur yang Berhasil Diimplementasikan
+
+Menambah task
+
+Menandai task sebagai selesai
+
+Memfilter task berdasarkan status
+
+Menghapus task
+
+Teknologi yang Digunakan
+
+React.js
+
+Tailwind CSS
+
+JavaScript (ES6)
+
+HTML
+
+Tujuan Pembuatan
+
+Proyek ini bertujuan sebagai:
+
+Latihan dasar React.js
+
+Implementasi state dan props
+
+Penerapan Tailwind CSS untuk styling UI
