@@ -26,6 +26,7 @@ function ProductList({ search, category }) {
 
     if (loading) return <h1>Loading...</h1>
     if (error) return <h1>{error}</h1>
+    if (products.length === 0) return <h1>produk tidak di temukan</h1>
 
     const filteredProduct = products.filter((p) => {
         const searchMatch = p.title
