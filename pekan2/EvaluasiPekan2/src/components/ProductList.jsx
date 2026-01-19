@@ -1,9 +1,9 @@
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import ProductCard from "./ProductCard";
-import {CartContext} from "../context/CartContext.jsx"
+import { CartContext } from "../context/CartContext.jsx"
 function ProductList({ search, category }) {
-    const {addToCart} = useContext(CartContext)
+    const { addToCart } = useContext(CartContext)
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
@@ -36,9 +36,18 @@ function ProductList({ search, category }) {
         return searchMatch && categoryMatch
     })
 
-    return filteredProduct.map((p) => (
-        <ProductCard key={p.id} product={p} addToCart={addToCart}/>
-    ))
+    return (
+        <div className="grid grid-cols-2  gap-6">
+            {filteredProduct.map((p) => (
+                <ProductCard
+                    key={p.id}
+                    product={p}
+                    addToCart={addToCart}
+                />
+            ))}
+        </div>
+    );
+
 
 }
 
