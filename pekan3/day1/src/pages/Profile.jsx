@@ -4,7 +4,7 @@ import { useLanguage } from '../context/LanguageContext'
 import { useNotification } from '../context/NotificationContext'
 
 export function Profile() {
-  const { user, isAutenticated, logout } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
   const { addNotification, notification } = useNotification();
@@ -29,7 +29,7 @@ export function Profile() {
     marginTop: '10px'
   }
 
-  if (!isAutenticated) {
+  if (!isAuthenticated) {
     return <p>Silahkan login terlebih dahulu</p>
   }
 

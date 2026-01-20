@@ -1,8 +1,8 @@
-import { useState,createContext,useContext } from "react";
+import { useState, createContext, useContext } from "react";
 
 export const AuthContext = createContext();
 
-export function AuthProvider({children}){
+export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
 
     const login = (dataUser) => {
@@ -16,23 +16,23 @@ export function AuthProvider({children}){
     const value = {
         user,
         login,
-        isAutenticated: !!user,
+        isAuthenticated: !!user,
         logout
     }
 
-    return(
+    return (
         <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
     )
 }
 
-export function useAuth(){
-   
+export function useAuth() {
+
     const context = useContext(AuthContext)
-    if(!context){
+    if (!context) {
         throw new Error("useAuth di pakai dalam AuthProvider");
-        
+
     }
     return context;
 }
