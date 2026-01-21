@@ -9,17 +9,17 @@ function App() {
   const { isAuthenticated } = useAuth()
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1 style={{ textAlign: 'center', color: '#2c3e50' }}>Auth & Shopping App</h1>
+    <div className="p-5">
+      <h1 className="text-center text-slate-800 text-3xl font-bold mb-8">Auth & Shopping App</h1>
 
-      <div style={{ maxWidth: '600px', margin: '0 auto 30px' }}>
+      <div className="max-w-xl mx-auto mb-8">
         {isAuthenticated ? <Profile /> : <Login />}
       </div>
 
       {isAuthenticated && (
-        <div>
-          <h2 style={{ textAlign: 'center', color: '#2c3e50' }}>🛒 Toko Online</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div className="mt-10">
+          <h2 className="text-center text-slate-800 text-2xl font-semibold mb-6">🛒 Toko Online</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <ProductList />
             <CartDisplay />
           </div>
