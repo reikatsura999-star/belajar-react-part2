@@ -1,13 +1,12 @@
 import { createContext, useState, useMemo, useCallback } from 'react'
 
-// Buat context untuk cart
 export const CartContext = createContext()
 
-// Provider component untuk cart
+
 export function CartProvider({ children }) {
     const [cartItems, setCartItems] = useState([])
 
-    // Tambah item ke cart (menggunakan useCallback untuk optimisasi)
+  
     const addToCart = useCallback((product) => {
         setCartItems((prevItems) => {
             // Cek apakah item sudah ada di cart
@@ -51,7 +50,7 @@ export function CartProvider({ children }) {
         setCartItems([])
     }, [])
 
-    // Hitung total harga (menggunakan useMemo untuk optimisasi)
+   
     const totalPrice = useMemo(() => {
         return cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
     }, [cartItems])
