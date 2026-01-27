@@ -1,6 +1,6 @@
 import Dashboard from "./components/DashBoard"
 import LoginForm from "./components/LoginForm"
-import ProductPage from "./components/ProductPage"
+import ProductPage from "./shop/ProductPage" // Import dari folder baru
 import { PrivateRoutes } from "./components/PrivateRoutes"
 import { Routes, Route } from "react-router-dom"
 import NotFound from "./components/NotFound"
@@ -9,14 +9,18 @@ import "./App.css"
 function App() {
   return (
     <>
-      <Routes> 
+      <Routes>
+        {/* Halaman Utama adalah Login */}
         <Route path="/" element={<LoginForm />} />
-        {/*private routes sebagai security bagi user yg udah login */}
+
+        {/* Grup Rute Terproteksi (Hanya Dashboard dan Produk) */}
         <Route element={<PrivateRoutes />}>
-               <Route path="/dashboard" element={<Dashboard />} />
-               <Route path="/products" element={<ProductPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/shop" element={<ProductPage />} /> {/* Route baru /shop */}
+          <Route path="/products" element={<ProductPage />} />
         </Route>
-        {/* route untuk halaman tidak ditemukan */}
+
+        {/* 404 diletakkan di luar agar bisa diakses semua orang */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

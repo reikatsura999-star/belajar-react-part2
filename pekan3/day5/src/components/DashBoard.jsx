@@ -5,14 +5,14 @@ export default function Dashboard() {
         <div style={{ padding: "20px" }}>
             <h1>This is DashBoard</h1>
             <nav style={{ marginTop: "20px" }}>
-                <Link to="/products" style={{
+                <Link to="/shop" style={{
                     padding: "10px 20px",
                     backgroundColor: "#646cff",
                     color: "white",
                     textDecoration: "none",
                     borderRadius: "5px"
                 }}>
-                    Ke Halaman Produk (Query Params)
+                    Ke Halaman Shop (Query Params)
                 </Link>
             </nav>
         </div>
