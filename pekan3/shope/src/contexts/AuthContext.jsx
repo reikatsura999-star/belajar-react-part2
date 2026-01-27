@@ -1,6 +1,6 @@
 import { createContext, useState, useContext } from 'react'
 
-// Buat context untuk authentication
+ 
 const AuthContext = createContext()
 
 // Provider component untuk membungkus aplikasi
@@ -34,7 +34,7 @@ export function AuthProvider({ children }) {
     )
 }
 
-// Custom hook untuk mengakses auth context
+
 export function useAuth() {
     const context = useContext(AuthContext)
     if (!context) {
