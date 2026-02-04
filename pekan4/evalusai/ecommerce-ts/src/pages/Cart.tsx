@@ -1,9 +1,10 @@
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { useAppDispatch } from "../hooks/useRedux";
 import { Link, Navigate } from "react-router-dom"
+import { useMemo, useCallback } from "react"
 
 
-import type { RootState, AppDispatch } from "../store/store"
+import type { RootState } from "../store/store"
 import { removeFromCart, clearCart, updateQuantity } from "../store/cartSlice"
 import { useUser } from "../context/UserContext"
 import { Button } from "../components/ui/button"
@@ -15,10 +16,24 @@ export function Cart() {
 
   if (!user) return <Navigate to="/login" />
 
-  const total = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  )
+  const total = useMemo(() => {
+    return cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    )
+  }, [cartItems])
+
+  const handleRemoveItem = useCallback((id: number) => {
+    dispatch(removeFromCart(id))
+  }, [dispatch])
+
+  const handleUpdateQuantity = useCallback((id: number, quantity: number) => {
+    dispatch(updateQuantity({ id, quantity }))
+  }, [dispatch])
+
+  const handleClearCart = useCallback(() => {
+    dispatch(clearCart())
+  }, [dispatch])
 
   if (cartItems.length === 0) {
     return (
@@ -78,14 +93,7 @@ export function Cart() {
                   {/* Quantity Controls */}
                   <div className="flex items-center gap-3 bg-gray-50 dark:bg-gray-700 rounded-lg p-1 border dark:border-gray-600">
                     <button
-                      onClick={() =>
-                        dispatch(
-                          updateQuantity({
-                            id: item.id,
-                            quantity: item.quantity - 1,
-                          })
-                        )
-                      }
+                      onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
                       disabled={item.quantity <= 1}
                       className="p-1 hover:bg-white dark:hover:bg-gray-600 rounded shadow-sm disabled:opacity-50 transition cursor-pointer dark:text-white"
                     >
@@ -95,14 +103,7 @@ export function Cart() {
                       {item.quantity}
                     </span>
                     <button
-                      onClick={() =>
-                        dispatch(
-                          updateQuantity({
-                            id: item.id,
-                            quantity: item.quantity + 1,
-                          })
-                        )
-                      }
+                      onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
                       className="p-1 hover:bg-white dark:hover:bg-gray-600 rounded shadow-sm transition cursor-pointer dark:text-white"
                     >
                       +
@@ -118,7 +119,7 @@ export function Cart() {
               </div>
 
               <button
-                onClick={() => dispatch(removeFromCart(item.id))}
+                onClick={() => handleRemoveItem(item.id)}
                 className="text-gray-400 hover:text-red-500 p-2 transition ml-2 cursor-pointer"
                 title="Hapus item"
               >
@@ -129,7 +130,7 @@ export function Cart() {
 
           <div className="flex justify-end mt-4">
             <button
-              onClick={() => dispatch(clearCart())}
+              onClick={handleClearCart}
               className="text-red-500 text-sm hover:text-red-700 hover:underline flex items-center gap-1 cursor-pointer"
             >
               🗑️ Kosongkan Keranjang
