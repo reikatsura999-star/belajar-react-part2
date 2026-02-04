@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useMemo, useCallback } from "react"
 import { ProductCard } from "../components/ProductCard"
 import { ProductFilter } from "../components/ProductFilter"
 import { useProducts } from "../hooks/useProducts"
@@ -13,9 +13,15 @@ export default function Home() {
 
   if (!user) return <Navigate to="/login" />
 
-  const filteredProducts = products.filter(product => {
-    return category === "all" || product.category === category
-  })
+  const filteredProducts = useMemo(() => {
+    return products.filter(product => {
+      return category === "all" || product.category === category
+    })
+  }, [products, category])
+
+  const handleCategoryChange = useCallback((newCategory: string) => {
+    setCategory(newCategory)
+  }, [])
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pb-20">
@@ -25,7 +31,7 @@ export default function Home() {
         <div className="pt-12 pb-8">
           <ProductFilter
             category={category}
-            onCategoryChange={setCategory}
+            onCategoryChange={handleCategoryChange}
           />
         </div>
 
