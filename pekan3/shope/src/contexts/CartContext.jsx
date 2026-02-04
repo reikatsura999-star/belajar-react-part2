@@ -40,7 +40,7 @@ export function CartProvider({ children }) {
 
         setCartItems((prevItems) =>
             prevItems.map((item) =>
-                item.id === productId ? { ...item, quantity } : item
+                item.id === productId ? { ...item, quantity} : item
             )
         )
     }, [removeFromCart])

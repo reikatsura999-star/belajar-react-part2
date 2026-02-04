@@ -67,6 +67,7 @@ function Products() {
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         />
                     </div>
+                    
 
                     {/* Dropdown Kategori */}
                     <div className="sm:w-48">
@@ -89,11 +90,13 @@ function Products() {
                     </div>
                 </div>
 
+
                 {/* Info hasil filter */}
                 <p className="mt-3 text-sm text-gray-500">
                     Menampilkan {filteredProducts.length} dari {products.length} produk
                 </p>
             </div>
+
 
             {/* Product Grid */}
             {filteredProducts.length > 0 ? (

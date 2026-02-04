@@ -8,6 +8,7 @@ import ProductDetail from "./pages/ProductDetail"
 import Cart from "./pages/Cart"
 import Login from "./pages/Login"
 import Checkout from "./pages/Checkout"
+import NotFound from "./pages/NotFound"
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </ErrorBoundary>
     </div>

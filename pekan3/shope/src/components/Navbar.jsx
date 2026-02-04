@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { useCart } from '../hooks/useCart'
-import { useAuth } from '../contexts/AuthContext'
+import useAuth from '../hooks/useAuth'
 
 function Navbar() {
     const { totalItems } = useCart()
@@ -10,9 +10,9 @@ function Navbar() {
         <nav className="bg-white shadow py-4 px-6">
             <div className="max-w-5xl mx-auto flex items-center justify-between">
                 {/* Logo */}
-                <NavLink to="/" className="text-xl font-bold text-blue-600">
+                <h1 className="text-xl font-bold text-blue-600">
                     ShopApp
-                </NavLink>
+                </h1>
 
                 {/* Navigation Links */}
                 <div className="flex items-center gap-6">
@@ -41,7 +41,7 @@ function Navbar() {
 
                     {isLoggedIn ? (
                         <div className="flex items-center gap-3">
-                            <span className="text-gray-600 text-sm">Hi, {user?.username}</span>
+                            <span className="text-gray-600 text-sm bg-blue-400 rounded-md px-2 py-1">Hi,{user?.username}</span>
                             <button onClick={logout} className="text-red-500 text-sm">
                                 Logout
                             </button>

@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react"
 import { useNavigate, useLocation, Link } from "react-router-dom"
-import { useAuth } from "../contexts/AuthContext"
-
+import useAuth from "../hooks/useAuth"
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")

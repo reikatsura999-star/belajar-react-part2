@@ -1,8 +1,7 @@
 import { useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '../hooks/useCart'
-import { useAuth } from '../contexts/AuthContext'
-
+import useAuth from '../hooks/useAuth'
 function Cart() {
     const { cartItems, removeFromCart, updateQuantity, totalPrice, totalItems } = useCart()
     const { isLoggedIn } = useAuth()
@@ -53,7 +52,7 @@ function Cart() {
                     {cartItems.map((item) => (
                         <div key={item.id} className="p-4 flex items-center gap-4">
                             {/* Product Image */}
-                            <div className="w-16 h-16 bg-gray-100 rounded flex-shrink-0">
+                            <div className="w-16 h-16 bg-gray-100 rounded shrink-0">
                                 <img
                                     src={item.image}
                                     alt={item.title}
@@ -62,7 +61,7 @@ function Cart() {
                             </div>
 
                             {/* Product Info */}
-                            <div className="flex-grow">
+                            <div className="grow">
                                 <Link
                                     to={`/products/${item.id}`}
                                     className="text-gray-800 hover:text-blue-600 text-sm font-medium line-clamp-1"

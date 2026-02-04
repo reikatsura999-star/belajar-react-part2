@@ -23,12 +23,14 @@ function ProductCard({ product }) {
                 </div>
             </Link>
 
+
             <Link to={`/products/${product.id}`}>
                 <h3 className="text-sm font-medium text-gray-800 line-clamp-2 h-10 hover:text-blue-600">
                     {product.title}
                 </h3>
             </Link>
 
+           
             <p className="text-gray-500 text-xs mt-1">{product.category}</p>
 
             <div className="flex items-center justify-between mt-3">

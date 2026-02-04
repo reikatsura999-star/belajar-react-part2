@@ -1,10 +1,10 @@
-import { createContext, useState, useContext } from 'react'
+import { createContext, useState } from 'react'
 
  
-const AuthContext = createContext()
+ const AuthContext = createContext()
 
 
-export function AuthProvider({ children }) {
+export function  AuthProvider({ children }) {
     const [user, setUser] = useState(null)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -16,6 +16,9 @@ export function AuthProvider({ children }) {
 
     // Fungsi logout
     const logout = () => {
+        const isConfirm =  confirm('Anda yakin ingin logout?')
+        if (!isConfirm) return
+
         setUser(null)
         setIsLoggedIn(false)
     }
@@ -34,11 +37,7 @@ export function AuthProvider({ children }) {
     )
 }
 
+export default AuthContext;
 
-export function useAuth() {
-    const context = useContext(AuthContext)
-    if (!context) {
-        throw new Error('useAuth harus digunakan dalam AuthProvider')
-    }
-    return context
-}
+
+

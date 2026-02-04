@@ -1,8 +1,7 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../hooks/useCart'
-import { useAuth } from '../contexts/AuthContext'
-
+import useAuth from '../hooks/useAuth'
 function Checkout() {
     const { cartItems, totalPrice, clearCart } = useCart()
     const { user } = useAuth()
